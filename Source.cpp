@@ -89,10 +89,10 @@ std::vector<HWND>db_tables_left;
 std::vector<std::string> databases_name;
 static int in = 0;
 
-//int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR args, int ncmdshow) {
-int main() {
+int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR args, int ncmdshow) {
+//int main() {
 	LoadLibrary(L"Msftedit.dll");
-
+	//ejehge
 	HICON hMyIcon = (HICON)LoadImage(NULL, L"png\\main_logo.ico", IMAGE_ICON, 0, 0, LR_LOADFROMFILE | LR_DEFAULTSIZE);
 
 	WNDCLASSEX SoftwareMainClass = CreateNewClass((HBRUSH)COLOR_WINDOW, LoadCursor(NULL, IDC_ARROW), NULL, LoadIcon(NULL, MAKEINTRESOURCE(IDI_ICON1)),
@@ -105,7 +105,7 @@ int main() {
 		L"LeftPanelClass", LeftPanelProcedure);
 	if (!RegisterClassEx(&LeftPanelClass)) { return -1; }
 
-	
+
 
 	WNDCLASSEX RightPanelClass = CreateNewClass((HBRUSH)COLOR_WINDOW, LoadCursor(NULL, IDC_ARROW), NULL, LoadIcon(NULL, IDI_QUESTION),
 		L"RightPanelClass", RightPanelProcedure);
