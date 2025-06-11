@@ -92,7 +92,7 @@ static int in = 0;
 int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR args, int ncmdshow) {
 //int main() {
 	LoadLibrary(L"Msftedit.dll");
-	//ejehge
+	
 	HICON hMyIcon = (HICON)LoadImage(NULL, L"png\\main_logo.ico", IMAGE_ICON, 0, 0, LR_LOADFROMFILE | LR_DEFAULTSIZE);
 
 	WNDCLASSEX SoftwareMainClass = CreateNewClass((HBRUSH)COLOR_WINDOW, LoadCursor(NULL, IDC_ARROW), NULL, LoadIcon(NULL, MAKEINTRESOURCE(IDI_ICON1)),
