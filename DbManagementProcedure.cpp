@@ -183,7 +183,6 @@ LRESULT CALLBACK DbManagementProcedure(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp
 				}
 				else if (active_table == i) {
 					active_table = -1;
-					std::cout << "hell";
 					InvalidateRect(db_tables[i], NULL, TRUE);
 					ClearRow();
 				}

@@ -6,7 +6,7 @@ void GetTables(std::string dbname, int index) {
 	string bdName;
 	string sql_query;
 	sqlite3_close(db);
-	string dbName = "databases/";
+	string dbName = "..\\..\\databases/";
 	dbName += dbname.c_str();
 
 	if (sqlite3_open(dbName.c_str(), &db) != SQLITE_OK) {

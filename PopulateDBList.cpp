@@ -11,7 +11,7 @@ extern HFONT default_font;
 
 void PopulateDBList() {
 	databases_name.clear();
-	for (const auto& entry : std::filesystem::directory_iterator("databases/")) {
+	for (const auto& entry : std::filesystem::directory_iterator("..\\..\\databases/")) {
 		if (entry.is_regular_file()) {
 			std::string name = entry.path().filename().string();
 			if (name.ends_with(".sqlite") || name.ends_with(".db") || name.ends_with("sqlite3")) {

@@ -55,11 +55,11 @@ LRESULT CALLBACK LeftPanelProcedure(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp) {
 		EndPaint(hWnd, &ps);
 	}
 	else if (msg == WM_CREATE) {
-		hIconExtend = (HICON)LoadImage(GetModuleHandle(NULL), L"png\\btn_extend.ico", IMAGE_ICON, 16, 16, LR_LOADFROMFILE);
+		hIconExtend = (HICON)LoadImage(GetModuleHandle(NULL), L"..\\..\\png\\btn_extend.ico", IMAGE_ICON, 16, 16, LR_LOADFROMFILE);
 		if (!hIconExtend) {
 			MessageBox(NULL, L"Не вдалося завантажити іконку! hIconExtend", L"Помилка", MB_OK | MB_ICONERROR);
 		}
-		g_hLogo = (HICON)LoadImage(NULL, L"png\\left_logo2.ico", IMAGE_ICON, 196, 196, LR_LOADFROMFILE);
+		g_hLogo = (HICON)LoadImage(NULL, L"..\\..\\png\\left_logo2.ico", IMAGE_ICON, 196, 196, LR_LOADFROMFILE);
 		if (!g_hLogo) {
 			MessageBox(NULL, L"Не вдалося завантажити іконку! g_hLogo", L"Помилка", MB_OK | MB_ICONERROR);
 		}
@@ -212,7 +212,7 @@ LRESULT CALLBACK LeftPanelProcedure(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp) {
 					ClearLeft(i);
 
 					sqlite3_close(db);
-					std::string dbName = "databases/";
+					std::string dbName = "..\\..\\databases/";
 					char buffer[24]{};
 					GetWindowTextA(db_window[i - 1], buffer, 24);
 					dbName += buffer;

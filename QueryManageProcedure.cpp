@@ -83,8 +83,8 @@ LRESULT CALLBACK QueryManageProcedure(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 			int textY = pDIS->rcItem.top + ((pDIS->rcItem.bottom - pDIS->rcItem.top) - textSize.cy) / 2;
 
 			if (pressed)
-				hIconRun = (HICON)LoadImage(GetModuleHandle(NULL), L"png\\pressed_run.ico", IMAGE_ICON, 20, 20, LR_LOADFROMFILE);
-			else hIconRun = (HICON)LoadImage(GetModuleHandle(NULL), L"png\\button_run.ico", IMAGE_ICON, 20, 20, LR_LOADFROMFILE);
+				hIconRun = (HICON)LoadImage(GetModuleHandle(NULL), L"..\\..\\png\\pressed_run.ico", IMAGE_ICON, 20, 20, LR_LOADFROMFILE);
+			else hIconRun = (HICON)LoadImage(GetModuleHandle(NULL), L"..\\..\\png\\button_run.ico", IMAGE_ICON, 20, 20, LR_LOADFROMFILE);
 
 			if (hIconRun)
 				DrawIconEx(hdc, iconX, iconY, hIconRun, iconSize, iconSize, 0, NULL, DI_NORMAL);
@@ -110,7 +110,7 @@ LRESULT CALLBACK QueryManageProcedure(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 					bdName.push_back(buff[i]);
 					std::cout << buff << "---" << bdName << std::endl;
 				}
-				bdName = "databases/" + bdName + ".db";
+				bdName = "..\\..\\databases/" + bdName + ".db";
 
 				std::cout << buff << std::endl;
 				std::fill(buff.begin(), buff.end(), '\0');
@@ -140,7 +140,7 @@ LRESULT CALLBACK QueryManageProcedure(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 					bdName.push_back(buff[i]);
 					std::cout << buff << "---" << bdName << std::endl;
 				}
-				bdName = "databases/" + bdName + ".db";
+				bdName = "..\\..\\databases/" + bdName + ".db";
 
 				std::cout << buff << std::endl;
 				std::fill(buff.begin(), buff.end(), '\0');

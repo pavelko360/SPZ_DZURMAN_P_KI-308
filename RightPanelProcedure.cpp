@@ -98,19 +98,19 @@ LRESULT CALLBACK RightPanelProcedure(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp) 
 		return 0;
 	}
 	else if (msg == WM_CREATE) {
-		hIconSQL = (HICON)LoadImage(GetModuleHandle(NULL), L"png\\list.ico", IMAGE_ICON, 20, 20, LR_LOADFROMFILE);
+		hIconSQL = (HICON)LoadImage(GetModuleHandle(NULL), L"..\\..\\png\\list.ico", IMAGE_ICON, 20, 20, LR_LOADFROMFILE);
 		if (!hIconSQL) {
 			MessageBox(NULL, L"Не вдалося завантажити іконку! sql", L"Помилка", MB_OK | MB_ICONERROR);
 		}
-		hIconDBS = (HICON)LoadImage(GetModuleHandle(NULL), L"png\\dbs2.ico", IMAGE_ICON, 20, 20, LR_LOADFROMFILE);
+		hIconDBS = (HICON)LoadImage(GetModuleHandle(NULL), L"..\\..\\png\\dbs2.ico", IMAGE_ICON, 20, 20, LR_LOADFROMFILE);
 		if (!hIconDBS) {
 			MessageBox(NULL, L"Не вдалося завантажити іконку! databases", L"Помилка", MB_OK | MB_ICONERROR);
 		}
-		hIconStatus = (HICON)LoadImage(GetModuleHandle(NULL), L"png\\btn_status.ico", IMAGE_ICON, 20, 20, LR_LOADFROMFILE);
+		hIconStatus = (HICON)LoadImage(GetModuleHandle(NULL), L"..\\..\\png\\btn_status.ico", IMAGE_ICON, 20, 20, LR_LOADFROMFILE);
 		if (!hIconStatus) {
 			MessageBox(NULL, L"Не вдалося завантажити іконку! status", L"Помилка", MB_OK | MB_ICONERROR);
 		}
-		hIconStg = (HICON)LoadImage(GetModuleHandle(NULL), L"png\\stg.ico", IMAGE_ICON, 20, 20, LR_LOADFROMFILE);
+		hIconStg = (HICON)LoadImage(GetModuleHandle(NULL), L"..\\..\\png\\stg.ico", IMAGE_ICON, 20, 20, LR_LOADFROMFILE);
 		if (!hIconStg) {
 			MessageBox(NULL, L"Не вдалося завантажити іконку! settings", L"Помилка", MB_OK | MB_ICONERROR);
 		}
