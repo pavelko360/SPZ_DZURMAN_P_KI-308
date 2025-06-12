@@ -1,6 +1,5 @@
 #include "LeftPanelProcedure.h"
 #include "Definitions.h"
-#include <iostream>
 #include "ClearLeft.h"
 #include <string>
 #include <vector>>
@@ -50,7 +49,7 @@ LRESULT CALLBACK LeftPanelProcedure(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp) {
 		if (g_hLogo) {
 			DrawIconEx(hdc, (rect.right - 196) / 2 - 10, 20, g_hLogo, 196, 196, 0, NULL, DI_NORMAL);
 		}
-		else std::cout << "error" << std::endl;
+		else MessageBoxA(NULL, "Load icon failed!", "Error", MB_OK);
 
 		EndPaint(hWnd, &ps);
 	}
@@ -218,14 +217,16 @@ LRESULT CALLBACK LeftPanelProcedure(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp) {
 					dbName += buffer;
 
 					if (sqlite3_open(dbName.c_str(), &db) != SQLITE_OK) {
-						std::cout << "Open error" << sqlite3_errmsg(db) << std::endl;
+						//std::cout << "Open error" << sqlite3_errmsg(db) << std::endl;
+						MessageBoxA(NULL, "Open db error!", "Error", MB_OK);
 					}
 
 					else {
 						sqlite3_stmt* stmt;
 						const char* query = "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%';";
 						if (sqlite3_prepare_v2(db, query, -1, &stmt, nullptr) != SQLITE_OK) {
-							std::cout << "prepare errror " << std::endl;
+							//std::cout << "prepare errror " << std::endl;
+							MessageBoxA(NULL, "SQL prepare error!", "Error", MB_OK);
 							sqlite3_close(db);
 						}
 						else {

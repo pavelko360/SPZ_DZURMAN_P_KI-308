@@ -1,6 +1,5 @@
 ﻿#include <Windows.h>
 #include "Definitions.h"
-#include <iostream>
 #include <winsqlite/winsqlite3.h>
 
 #include <vector>
@@ -34,7 +33,7 @@
 #include "DbManagementProcedure.h"
 
 float left_panel_width = 0.22;
-using std::cout, std::endl;
+//using std::cout, std::endl;
 using std::string;
 
 

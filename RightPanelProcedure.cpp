@@ -1,6 +1,5 @@
 #include "RightPanelProcedure.h"
 #include "Definitions.h"
-#include <iostream>
 #include "EditBasesStruct.h"
 #include <vector>
 extern UINT activeButtonId;
@@ -174,8 +173,8 @@ LRESULT CALLBACK RightPanelProcedure(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp) 
 			for (size_t j = 0; j < table_matrix[0].size(); j++) {
 				MoveWindow(table_matrix[0][j], 2 + (((parent_window.right - 4) / table_matrix[0].size() * j)), 104 + (25 * hight_index), (parent_window.right - 4) / table_matrix[0].size(), 25, false);
 			}
-			std::cout << table_matrix[1].size() << std::endl;
-			std::cout << table_matrix.size() << std::endl;
+			//std::cout << table_matrix[1].size() << std::endl;
+			//std::cout << table_matrix.size() << std::endl;
 			hight_index++;
 			for (size_t i = 1; i < table_matrix.size(); i++)
 			{

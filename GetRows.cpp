@@ -1,7 +1,6 @@
 #include "GetRows.h"
 #include <Windows.h>
 #include <winsqlite/winsqlite3.h>
-#include <iostream>
 #include "Definitions.h"
 #include <vector>
 extern short pressed_btn;
@@ -31,11 +30,11 @@ void GetRows(const char tableName[]) {
 
 			}
 			high_index++;
-			std::cout << std::endl;
 		}
 	}
 	else {
-		std::cout << "error" << sqlite3_errmsg(db) << std::endl;
+		//std::cout << "error" << sqlite3_errmsg(db) << std::endl;
+		MessageBoxA(NULL, "SQLite error!", "Error", MB_OK);
 	}
 	sqlite3_finalize(stmt);
 }

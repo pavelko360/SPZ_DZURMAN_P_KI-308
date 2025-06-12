@@ -1,4 +1,5 @@
 #include "getTableColumns.h"
+#include <Windows.h>
 
 std::vector<std::string> getTableColumns(const char tableName[]) {
 
@@ -8,7 +9,8 @@ std::vector<std::string> getTableColumns(const char tableName[]) {
 	strcat_s(sql, ");");
 	sqlite3_stmt* stmt;
 	if (sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr) != SQLITE_OK) {
-		std::cout << "Error preparing statement: " << sqlite3_errmsg(db) << std::endl;
+		//std::cout << "Error preparing statement: " << sqlite3_errmsg(db) << std::endl;
+		MessageBoxA(NULL, "Open db error!", "Error", MB_OK);
 		return columns;
 	}
 

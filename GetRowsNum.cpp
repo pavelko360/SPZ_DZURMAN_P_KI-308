@@ -1,6 +1,6 @@
-#include <iostream> 
 #include <winsqlite/winsqlite3.h>
 #include "GetRowsNum.h"
+#include <Windows.h>
 
 extern sqlite3* db;
 
@@ -18,7 +18,8 @@ int GetRowsNum(const char tableName[]) {
 		}
 	}
 	else {
-		  std::cout << "error" << sqlite3_errmsg(db) << std::endl;
+		  //std::cout << "error" << sqlite3_errmsg(db) << std::endl;
+		MessageBoxA(NULL, "SQLite!", "Error", MB_OK);
 	}
 	sqlite3_finalize(stmt);
 

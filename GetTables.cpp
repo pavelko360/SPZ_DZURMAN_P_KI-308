@@ -1,7 +1,7 @@
 #include "GetTables.h"
 #include "Definitions.h"
 #include "MoveBlock.h"
-#include <iostream>
+
 void GetTables(std::string dbname, int index) {
 	string bdName;
 	string sql_query;
@@ -10,7 +10,8 @@ void GetTables(std::string dbname, int index) {
 	dbName += dbname.c_str();
 
 	if (sqlite3_open(dbName.c_str(), &db) != SQLITE_OK) {
-		std::cout << "Open error" << sqlite3_errmsg(db) << std::endl;
+		//std::cout << "Open error" << sqlite3_errmsg(db) << std::endl;
+		MessageBoxA(NULL, "Open db error!", "Error", MB_OK);
 	}
 
 	else {
@@ -18,7 +19,8 @@ void GetTables(std::string dbname, int index) {
 		bool hasRows = false;
 		const char* query = "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%';";
 		if (sqlite3_prepare_v2(db, query, -1, &stmt, nullptr) != SQLITE_OK) {
-			std::cout << "prepare errror " << std::endl;
+			//std::cout << "prepare errror " << std::endl;
+			MessageBoxA(NULL, "SQL prepare error!", "Error", MB_OK);
 			sqlite3_close(db);
 		}
 		else {
