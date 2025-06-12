@@ -1,7 +1,6 @@
 #include "QueryManageProcedure.h"
 #include "Definitions.h"
 #include <string>
-#include <iostream>
 #include "PopulateDBList.h"
 #include "ClearRow.h"
 #include "Get_titles.h"
@@ -83,8 +82,8 @@ LRESULT CALLBACK QueryManageProcedure(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 			int textY = pDIS->rcItem.top + ((pDIS->rcItem.bottom - pDIS->rcItem.top) - textSize.cy) / 2;
 
 			if (pressed)
-				hIconRun = (HICON)LoadImage(GetModuleHandle(NULL), L"png\\pressed_run.ico", IMAGE_ICON, 20, 20, LR_LOADFROMFILE);
-			else hIconRun = (HICON)LoadImage(GetModuleHandle(NULL), L"png\\button_run.ico", IMAGE_ICON, 20, 20, LR_LOADFROMFILE);
+				hIconRun = (HICON)LoadImage(GetModuleHandle(NULL), L"..\\..\\png\\pressed_run.ico", IMAGE_ICON, 20, 20, LR_LOADFROMFILE);
+			else hIconRun = (HICON)LoadImage(GetModuleHandle(NULL), L"..\\..\\png\\button_run.ico", IMAGE_ICON, 20, 20, LR_LOADFROMFILE);
 
 			if (hIconRun)
 				DrawIconEx(hdc, iconX, iconY, hIconRun, iconSize, iconSize, 0, NULL, DI_NORMAL);
@@ -108,13 +107,12 @@ LRESULT CALLBACK QueryManageProcedure(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 					if (buff[i] == ' ' || buff[i] == '\t' || buff[i] == '\n')
 						continue;
 					bdName.push_back(buff[i]);
-					std::cout << buff << "---" << bdName << std::endl;
 				}
-				bdName = "databases/" + bdName + ".db";
+				bdName = "..\\..\\databases/" + bdName + ".db";
 
-				std::cout << buff << std::endl;
+				//std::cout << buff << std::endl;
 				std::fill(buff.begin(), buff.end(), '\0');
-				std::cout << buff << std::endl;
+				//std::cout << buff << std::endl;
 
 				int rc = sqlite3_open(bdName.c_str(), &db);
 				if (rc != SQLITE_OK) {
@@ -123,7 +121,7 @@ LRESULT CALLBACK QueryManageProcedure(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 					ShowWindow(inform_window, SW_SHOW);
 				}
 				else {
-					std::cout << "DB opened" << bdName.c_str() << std::endl;
+					//std::cout << "DB opened" << bdName.c_str() << std::endl;
 					strncpy_s(inform_text, "SUCCES!", sizeof(inform_text));
 					ShowWindow(inform_window, SW_HIDE);
 					ShowWindow(inform_window, SW_SHOW);
@@ -138,13 +136,13 @@ LRESULT CALLBACK QueryManageProcedure(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 					if (buff[i] == ' ' || buff[i] == '\t' || buff[i] == '\n')
 						continue;
 					bdName.push_back(buff[i]);
-					std::cout << buff << "---" << bdName << std::endl;
+					//std::cout << buff << "---" << bdName << std::endl;
 				}
-				bdName = "databases/" + bdName + ".db";
+				bdName = "..\\..\\databases/" + bdName + ".db";
 
-				std::cout << buff << std::endl;
+				//std::cout << buff << std::endl;
 				std::fill(buff.begin(), buff.end(), '\0');
-				std::cout << buff << std::endl;
+				//std::cout << buff << std::endl;
 
 				if (std::remove(bdName.c_str()) == 0) {
 					strncpy_s(inform_text, "SUCCES!", sizeof(inform_text));
@@ -168,7 +166,6 @@ LRESULT CALLBACK QueryManageProcedure(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 					if (sqlite3_prepare_v2(db, sql_query.c_str(), -1, &stmt, nullptr) == SQLITE_OK) {
 						int step_rc = sqlite3_step(stmt);
 						if (step_rc == SQLITE_DONE) {
-							std::cout << "succes!" << std::endl;
 							sqlite3_finalize(stmt);
 							UINT prev_btn = activeButtonId;
 							succes = 1;
@@ -200,12 +197,13 @@ LRESULT CALLBACK QueryManageProcedure(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 							sqlite3_finalize(stmt);
 						}
 						else {
-							std::cout << "sqlite3_step error!" << sqlite3_errmsg(db) << std::endl;
+							//std::cout << "sqlite3_step error!" << sqlite3_errmsg(db) << std::endl;
+							MessageBoxA(NULL, "SQLite step error!", "Error", MB_OK);
 							sqlite3_finalize(stmt);
 						}
 					}
 					else {
-						std::cout << sqlite3_errmsg(db) << std::endl;
+						//std::cout << sqlite3_errmsg(db) << std::endl;
 						UINT prev_btn = activeButtonId;
 						succes = 0;
 						ShowWindow(query_field_parent, SW_HIDE);
@@ -216,9 +214,10 @@ LRESULT CALLBACK QueryManageProcedure(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 
 					}
 				}
-				else {
-					std::cout << "buff is empty" << std::endl;
-				}
+				//else {
+				//	//std::cout << "buff is empty" << std::endl;
+				//	MessageBoxA(NULL, "Buff is empty!", "Error", MB_OK);
+				//}
 			}
 		}
 	}

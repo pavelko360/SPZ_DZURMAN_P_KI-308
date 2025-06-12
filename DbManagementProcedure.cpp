@@ -174,7 +174,7 @@ LRESULT CALLBACK DbManagementProcedure(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp
 					MoveBlock(pressed_btn);
 
 					for (size_t j = 0; j < cols.size(); j++) {
-						std::cout << parent_window.right << std::endl;
+						//std::cout << parent_window.right << std::endl;
 						HWND row_item = CreateWindowExA(0, "STATIC", cols[j].c_str(), WS_CHILD | WS_VISIBLE | SS_OWNERDRAW, 25 + ((parent_window.right - 50) / cols.size()) * j, (pressed_btn + 1) * 30 + 40 + 5 * pressed_btn, (parent_window.right - 50) / cols.size(), 25, databases_window, (HMENU)tables_titles_def, NULL, NULL);
 						table_matrix[0].push_back(row_item);
 					}
@@ -183,7 +183,6 @@ LRESULT CALLBACK DbManagementProcedure(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp
 				}
 				else if (active_table == i) {
 					active_table = -1;
-					std::cout << "hell";
 					InvalidateRect(db_tables[i], NULL, TRUE);
 					ClearRow();
 				}
