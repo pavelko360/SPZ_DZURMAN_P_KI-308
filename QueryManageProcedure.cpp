@@ -174,7 +174,6 @@ LRESULT CALLBACK QueryManageProcedure(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 							InvalidateRect(GetDlgItem(hWnd, 12), NULL, TRUE);
 							InvalidateRect(GetDlgItem(hWnd, prev_btn), NULL, TRUE);
 							ShowWindow(result_window, SW_SHOW);
-							sqlite3_finalize(stmt);
 						}
 						else if (step_rc == SQLITE_ROW) {
 							int hight_index = 0;
